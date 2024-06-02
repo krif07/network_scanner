@@ -1,6 +1,14 @@
 #!/usr/bin/env python
 
 import scapy.all as scapy
+import optparse
+
+
+def get_arguments():
+    parser = optparse.OptionParser()
+    parser.add_option("-t", "--target", dest="target", help="Target IP / IP range.")
+    (opts, arguments) = parser.parse_args()
+    return opts
 
 
 def scan(ip):
@@ -27,5 +35,7 @@ def print_result(result_list):
     print("---------------------------------------------------------")
 
 
-c_list = scan("192.168.164.1/24")
+options = get_arguments()
+c_list = scan(options.target)
 print_result(c_list)
+#c_list = scan("192.168.164.1/24")
