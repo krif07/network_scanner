@@ -1,14 +1,13 @@
 #!/usr/bin/env python
 
 import scapy.all as scapy
-import optparse
+import argparse
 
 
 def get_arguments():
-    parser = optparse.OptionParser()
-    parser.add_option("-t", "--target", dest="target", help="Target IP / IP range.")
-    (opts, arguments) = parser.parse_args()
-    return opts
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-t", "--target", dest="target", help="Target IP / IP range.")
+    return parser.parse_args()
 
 
 def scan(ip):
